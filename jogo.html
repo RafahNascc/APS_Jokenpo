@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pedra, Papel, Tesoura, Lagarto e Spock</title>
+    <link rel="icon" href="gestures.png" type="image/x-icon">
+    <link rel="stylesheet" href="jogo.css">
+
+
+</head>
+    
+<body>
+    
+    <div class="titulo">
+        <img src="gestures.png" id="maozinha">
+        <h1>Jokenpô Meio Estranho</h1>
+    </div>
+
+
+    <div class="conteiner">
+
+        <div id="computerChoiceImages">
+
+            <img id="pedraImg" src="stone.png" alt="Pedra">
+            <img id="papelImg" src="paper.png" alt="Papel">
+            <img id="tesouraImg" src="scissors.png" alt="Tesoura">
+            <img id="lagartoImg" src="tyrannosaurus.png" alt="Lagarto">
+            <img id="spockImg" src="vulcan.png" alt="Spock">
+    
+        </div>
+
+        <p>Escolha uma opção:</p>
+        <div class="botoes">
+
+            <button id="pedra">Pedra</button>
+            <button id="papel">Papel</button>
+            <button id="tesoura">Tesoura</button>
+            <button id="lagarto">Lagarto</button>
+            <button id="spock">Spock</button>
+        
+        </div>
+
+        <p>Contagem Regressiva: <span id="countdown"></span></p>
+        
+        <p>Sua escolha: <span id="playerChoice"></span></p>
+        
+        <p>Escolha do Dispositivo: <span id="computerChoice"></span></p>
+        
+        <p>Resultado: <span id="result"></span></p>
+        <p>Pontuação:</p>
+        
+        <div class="info">
+            <p>Vitórias: <span id="wins">0</span></p>
+            <p>Empates: <span id="draws">0</span></p>
+            <p>Derrotas: <span id="losses">0</span></p>
+        </div>
+    </div>
+
+    <button id="reset">Reiniciar</button>
+
+    <script>
+    
+    // Inicialize as variáveis de pontuação
+    
+    let wins = 0;
+    let draws = 0;
+    let losses = 0;
+    
+    // Opções do jogo
+    
+    const choices = ["pedra", "papel", "tesoura", "lagarto", "spock"];
+    
+    // Função para escolha aleatória do dispositivo
+    
+    function getComputerChoice() {
+        const randomNumber = Math.floor(Math.random() * choices.length);
+        return choices[randomNumber];
+    }
+
+    // Função de contagem regressiva
+    
+    function countdown(callback) {
+        let seconds = 3;
+        const countdownElement = document.getElementById("countdown");
+        const intervalId = setInterval(function() {
+            countdownElement.textContent = seconds;
+            seconds--;
+            if (seconds < 0) {
+                clearInterval(intervalId);
+                countdownElement.textContent = "";
+                callback();
+            }
+        }, 1000);
+    }
+    
+    // Função para determinar o vencedor e atualizar a pontuação
+    
+    function determineWinner(playerChoice, computerChoice) {
+        if (playerChoice === computerChoice) {
+            draws++;
+            return "Empate!";
+        } else if (
+            (playerChoice === "pedra" && (computerChoice === "tesoura" || computerChoice === "lagarto")) ||
+            (playerChoice === "papel" && (computerChoice === "pedra" || computerChoice === "spock")) ||
+            (playerChoice === "tesoura" && (computerChoice === "papel" || computerChoice === "lagarto")) ||
+            (playerChoice === "lagarto" && (computerChoice === "spock" || computerChoice === "papel")) ||
+            (playerChoice === "spock" && (computerChoice === "tesoura" || computerChoice === "pedra"))
+        ) {
+            wins++;
+            return "Você venceu!";
+        } else {
+            losses++;
+            return "Você perdeu!";
+        }
+    }
+    
+    // Atualizar a interface com os resultados
+    
+    function updateScore() {
+        document.getElementById("draws").textContent = draws;
+        document.getElementById("losses").textContent = losses;
+        document.getElementById("wins").textContent = wins;
+    }
+    
+    // Função para lidar com o clique do jogador
+    
+    function playerChoiceHandler(playerChoice) {
+        countdown(function() {
+            const computerChoice = getComputerChoice();
+            document.getElementById("playerChoice").textContent = playerChoice;
+            document.getElementById("computerChoice").textContent = computerChoice;
+            const result = determineWinner(playerChoice, computerChoice);
+            document.getElementById("result").textContent = result;
+            updateScore();
+        });
+    }
+
+    // Adicione os manipuladores de clique aos botões
+    
+    document.getElementById("pedra").addEventListener("click", () => playerChoiceHandler("pedra"));
+    document.getElementById("papel").addEventListener("click", () => playerChoiceHandler("papel"));
+    document.getElementById("tesoura").addEventListener("click", () => playerChoiceHandler("tesoura"));
+    document.getElementById("lagarto").addEventListener("click", () => playerChoiceHandler("lagarto"));
+    document.getElementById("spock").addEventListener("click", () => playerChoiceHandler("spock"));
+
+    // Manipulador de clique para o botão de reinício
+    
+    document.getElementById("reset").addEventListener("click", () => {
+        wins = 0;
+        draws = 0;
+        losses = 0;
+        updateScore();
+        document.getElementById("playerChoice").textContent = "";
+        document.getElementById("computerChoice").textContent = "";
+        document.getElementById("result").textContent = "";
+    });
+    
+    </script>
+
+    <script src="jogo.js"></script>
+    
+</body>
+</html>

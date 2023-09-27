@@ -1,0 +1,176 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Evita que as bordas afetem o tamanho total dos elementos */
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(235, 235, 235);
+}
+
+h1 {
+    text-align: center;
+    color: orange;
+    font-size: 40px;
+}
+.titulo {
+
+    display: flex;
+    align-items: center;
+}
+
+#maozinha {
+
+    margin-right: 10px; /* Espaçamento entre a imagem e o título */
+    height: 80px;
+    width: auto;
+
+}
+.conteiner{
+
+    width: 500px;
+    height: 500px;
+    background-color: rgb(187, 187, 187);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin:30px;
+    font-family: Arial, sans-serif;
+    border-radius: 20px;
+    box-shadow:  4px 4px 4px rgba(0, 0, 0, 0.37);
+}
+button {
+
+    margin: 5px;
+}
+
+p {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    font-size: 20px;
+}
+#reset{
+
+    color: aliceblue;
+    background-color: brown;
+    border: none;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.295);
+    height: 50px;
+    width: 180px;
+    border-radius: 20px;
+    
+}
+#reset:hover{
+
+    background-color: rgb(94, 21, 21);
+}
+#wins,
+#draws,
+#losses {
+
+    margin-left: 10px;
+}
+
+#tesoura {
+
+    background-image: url('scissors.png'); /* Substitua 'tesoura.png' pelo caminho para a imagem desejada */
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    border: none;
+}
+
+#papel {
+
+    background-image: url('paper.png'); /* Substitua 'tesoura.png' pelo caminho para a imagem desejada */
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    border: none;
+}
+#lagarto {
+
+    background-image: url('tyrannosaurus.png'); /* Substitua 'tesoura.png' pelo caminho para a imagem desejada */
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    border: none;
+}
+
+#spock {
+
+    background-image: url('vulcan.png'); /* Substitua 'tesoura.png' pelo caminho para a imagem desejada */
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    border: none;
+}
+
+#pedra{
+
+    background-image: url('stone.png'); /* Substitua 'tesoura.png' pelo caminho para a imagem desejada */
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    border: none;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center; /* Alinha os botões horizontalmente ao centro */
+    align-items: center; /* Alinha os botões verticalmente ao centro */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+/* Estilos para cada botão individualmente (caso necessário) */
+.botoes button {
+    /* Estilos comuns para todos os botões aqui */
+    width: 100px; /* Defina o tamanho desejado para os botões */
+    height: 100px;
+}
+
+.info{
+
+    display: flex;
+    justify-content: center; /* Alinha os botões horizontalmente ao centro */
+    align-items: center; /* Alinha os botões verticalmente ao centro */
+    gap: 10px; /* Espaçamento entre os botões */
+
+}
+
+#computerChoiceImages img {
+
+    display: none;
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    border: none;
+    
+}
